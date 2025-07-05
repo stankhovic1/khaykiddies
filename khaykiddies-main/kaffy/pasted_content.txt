@@ -1,0 +1,226 @@
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>KHAY KIDDIES STORES</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      background: #f9f9f9;
+    }
+
+    header {
+      background-color: #ff91a4;
+      padding: 20px;
+      color: white;
+      text-align: center;
+      font-size: 2em;
+    }
+
+    nav {
+      background-color: #fff;
+      padding: 10px 0;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      border-bottom: 1px solid #ddd;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #444;
+      font-weight: bold;
+    }
+
+    .container {
+      padding: 20px;
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+    }
+
+    .product {
+      background: white;
+      border-radius: 10px;
+      padding: 15px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    .product img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    .product h3 {
+      margin: 10px 0 5px;
+    }
+
+    .product button {
+      padding: 10px;
+      background-color: #ff91a4;
+      border: none;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    #cart {
+      background: #fff0f5;
+      padding: 20px;
+      margin-top: 20px;
+      border-radius: 10px;
+    }
+
+    #cart ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    #cart ul li {
+      padding: 5px 0;
+    }
+
+    form {
+      margin-top: 40px;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    form input, form textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    form button {
+      margin-top: 10px;
+      padding: 10px 15px;
+      background-color: #ff91a4;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    footer {
+      background-color: #222;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    .socials a {
+      color: white;
+      margin: 0 10px;
+      text-decoration: none;
+    }
+
+    @media (max-width: 600px) {
+      nav {
+        flex-direction: column;
+        gap: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    KHAY KIDDIES STORES
+  </header>
+
+  <nav>
+    <a href="#">Home</a>
+    <a href="#cart">Cart</a>
+    <a href="#contact">09123703546</a>
+  </nav>
+
+  <div class="container">
+
+    <!-- PRODUCTS -->
+    <div class="products">
+      <div class="product">
+        <img src="https://images/children-tab.jpg" alt="Children tab">
+        <h3>Children tab</h3>
+        <p>₦10,000</p>
+        <button onclick="addToCart('Children tab')">Add to Cart</button>
+      </div>
+      <div class="product">
+        <img src="https://images/play-mat.jpg" alt="Play mat">
+        <h3>Play mat</h3>
+        <p>₦15,500</p>
+        <button onclick="addToCart('Play mat')">Add to Cart</button>
+      </div>
+      <div class="product">
+        <img src="https://images/toy-bag.jpg" alt="Toy bag">
+        <h3>Toy bag</h3>
+        <p>₦10,000</p>
+        <button onclick="addToCart('Hospital Bag')">Add to Cart</button>
+      </div>
+      <!-- Add more products as needed -->
+    </div>
+
+    <!-- CART -->
+    <div id="cart">
+      <h2>Your Cart</h2>
+      <ul id="cart-list"></ul>
+    </div>
+
+    <!-- CONTACT FORM -->
+    <form id="contact">
+      <h2>Contact Us</h2>
+      <input type="text" placeholder="KHAY KIDDIES STORES" required />
+      <input type="email" placeholder="oluwakemioyetunji@gmail.com" required />
+      <textarea placeholder="Your one stop shop for all baby items" rows="5" required></textarea>
+      <button type="submit">Send</button>
+    </form>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>Follow us on social media:</p>
+    <div class="socials">
+      <a href="https://facebook.com/khaykiddies" target="_blank">Facebook</a> |
+      <a href="https://tiktok.com/@yourpage" target="_blank">TikTok</a> |
+      <a href="https://wa.me/2349123703546" target="_blank">WhatsApp</a> |
+      <a href="https://instagram.com/khaykiddies" target="_blank">Instagram</a>
+    </div>
+    <p>&copy; 2025 KHAY KIDDIES STORES</p>
+  </footer>
+
+  <script>
+    let cartItems = [];
+
+    function addToCart(item) {
+      cartItems.push(item);
+      updateCart();
+    }
+
+    function updateCart() {
+      const cartList = document.getElementById('cart-list');
+      cartList.innerHTML = "";
+      cartItems.forEach((item, index) => {
+        const li = document.createElement('li');
+        li.textContent = `${index + 1}. ${item}`;
+        cartList.appendChild(li);
+      });
+    }
+  </script>
+
+</body>
+</html>
